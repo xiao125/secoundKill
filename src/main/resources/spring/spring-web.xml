@@ -9,9 +9,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 1:start springMVC annotation -->
+    <!--1,开启springmvc注解模式
+   a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+   b.默认提供一系列的功能:数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat
+   c:xml,json的默认读写支持-->
     <mvc:annotation-driven/>
 
     <!-- 2:static resource default servlet config -->
+    <!--
+        1).加入对静态资源处理：js,gif,png
+        2).允许使用 "/" 做整体映射
+    -->
     <mvc:default-servlet-handler/>
 
     <!-- 3:config jsp's view:ViewResolver -->
@@ -26,6 +34,7 @@
     <!-- 4:scan bean about web -->
     <!-- add all our controller to applicationContext -->
     <context:annotation-config />
+    <!--web层相关bean(即Controller)的配置-->
     <context:component-scan base-package="com.netease.seckill.controller"/>
 
 

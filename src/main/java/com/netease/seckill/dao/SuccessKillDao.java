@@ -15,11 +15,11 @@ public interface SuccessKillDao {
      * @param userPhone
      * @return 插入的行数
      */
-    int insertSuccessKill(@Param("seckillId")long seckillId,@Param("userPhone")long userPhone);
+    int insertSuccessKilled(@Param("seckillId")long seckillId,@Param("userPhone")long userPhone);
 
 
     /**
-     * 根据秒杀商品的id查询明细successKilled对象(该对象携带了Seckill秒杀产品对象)
+     * 根据秒杀商品的id查询明细successKill对象(该对象携带了Seckill秒杀产品对象)
      * @param seckillId
      * @param userPhone
      * @return

@@ -26,8 +26,8 @@ public class SeckillExcution {
     //秒杀成功返回所有信息
     public SeckillExcution(long seckillId, SeckillStatusEnum seckillStatusEnum, SuccessKill successKill) {
         this.seckillId = seckillId;
-        this.status = seckillStatusEnum.getStatus();
-        this.statusInfo = seckillStatusEnum.getStatusInfo();
+        this.status = seckillStatusEnum.getState();
+        this.statusInfo = seckillStatusEnum.getInfo();
         this.successKill = successKill;
     }
 
@@ -35,8 +35,8 @@ public class SeckillExcution {
     //秒杀失败返回信息
     public SeckillExcution(long seckillId, SeckillStatusEnum seckillStatusEnum) {
         this.seckillId = seckillId;
-        this.status = seckillStatusEnum.getStatus();
-        this.statusInfo = seckillStatusEnum.getStatusInfo();
+        this.status = seckillStatusEnum.getState();
+        this.statusInfo = seckillStatusEnum.getInfo();
     }
 
     public long getSeckillId() {

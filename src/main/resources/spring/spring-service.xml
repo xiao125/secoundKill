@@ -20,6 +20,8 @@
 
     <!--配置基于注解的声明式事务
    默认使用注解来管理事务行为-->
+
+    <!--Service实现类的方法中，在需要进行事务声明的方法上加上事务的注解:-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>

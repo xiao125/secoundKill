@@ -7,16 +7,26 @@ import java.util.Date;
  */
 public class SuccessKill {
 
-    private long seckillId;
+    private long seckillId; //秒杀商品ID
 
-    private long userPhone;
+    private long userPhone; //用户手机号
 
-    private short status;
+    private short state; //状态标识
 
-    private Date createTime;
+    private Date createTime; //创建时间
 
-    //many to one
+    //多对一,因为一件商品在库存中有很多数量，对应的购买明细也有很多。
     private Seckill seckill;
+
+    public short getState() {
+        return state;
+    }
+
+    public void setState(short state) {
+        this.state = state;
+    }
+
+
 
     public long getSeckillId() {
         return seckillId;
@@ -34,13 +44,6 @@ public class SuccessKill {
         this.userPhone = userPhone;
     }
 
-    public short getStatus() {
-        return status;
-    }
-
-    public void setStatus(short status) {
-        this.status = status;
-    }
 
     public Date getCreateTime() {
         return createTime;
@@ -63,7 +66,7 @@ public class SuccessKill {
         return "SuccessKill{" +
                 "seckillId=" + seckillId +
                 ", userPhone=" + userPhone +
-                ", status=" + status +
+                ", state=" + state +
                 ", createTime=" + createTime +
                 ", seckill=" + seckill +
                 '}';

@@ -19,11 +19,12 @@ import java.util.List;
 
 
 /**
+ * Controller中的每一个方法都对应我们系统中的一个资源URL
  * Created by Administrator on 2017/7/29.
  */
 
 @Controller
-@RequestMapping("/seckill")  //module
+@RequestMapping("/seckill")  //url:模块/资源/{}/细分
 public class SeckillController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -31,15 +32,19 @@ public class SeckillController {
     @Autowired(required = false)
     private SeckillService seckillService;
 
+    //秒杀列表
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(Model model){
 
+        //list.jsp+mode=ModelAndView
+        //获取列表页
         List<Seckill> seckills = seckillService.getSeckillList();
         model.addAttribute("seckills",seckills);
         return "list";
     }
 
 
+    //详情页
     @RequestMapping(value = "/{seckillId}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId,Model model){
 
@@ -59,6 +64,7 @@ public class SeckillController {
     }
 
 
+    //暴露秒杀接口
     @RequestMapping(value = "/{seckillId}/exposer",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"} )
     @ResponseBody
     public SeckillResult<Exposer> exposer(@PathVariable Long seckillId){
@@ -67,7 +73,7 @@ public class SeckillController {
 
         try{
 
-            Exposer exposer = seckillService.exposeSeckillUrl(seckillId);
+            Exposer exposer = seckillService.exposeSeckillUrl(seckillId); //秒杀开启输出秒杀接口地址
             result = new SeckillResult<Exposer>(true,exposer);
 
         }catch (Exception e){
@@ -116,6 +122,7 @@ public class SeckillController {
 
     }
 
+    //系统时间
     @RequestMapping(value = "/time/now",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public SeckillResult<Long> time(){
